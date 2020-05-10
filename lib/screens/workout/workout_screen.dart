@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:r_train/localizations/app_localizations.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/appBar/appBar_widget.dart';
 
@@ -20,7 +21,7 @@ class WorkoutScreen extends StatelessWidget {
             top: false,
             child: Scaffold(
               backgroundColor: ColorPalette.mainBackground,
-              appBar: gradientAppBar(context, 'Workout'),
+              appBar: gradientAppBar(context, 'workout'),
               body: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
@@ -29,7 +30,7 @@ class WorkoutScreen extends StatelessWidget {
                   children: <Widget>[
                     SizedBox(height: 1),
                     startButton(context),
-                    bottomInfoBar()
+                    bottomInfoBar(context)
                   ],
                 ),
               ),
@@ -51,7 +52,7 @@ class WorkoutScreen extends StatelessWidget {
             shape: BoxShape.circle),
         child: Center(
           child: Text(
-            'Start',
+            AppLocalizations.of(context).translate('start'),
             style: TextStyle(
                 color: Colors.white, fontSize: 40, fontWeight: FontWeight.w200),
           ),
@@ -60,7 +61,7 @@ class WorkoutScreen extends StatelessWidget {
     );
   }
 
-  Widget bottomInfoBar() {
+  Widget bottomInfoBar(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -69,7 +70,7 @@ class WorkoutScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Last workout',
+                AppLocalizations.of(context).translate('last_workout'),
                 style: TextStyle(color: Colors.white, fontSize: 16),
               ),
               Row(
@@ -115,21 +116,21 @@ class WorkoutScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                bottomBarItem('ic_run', 'steps', 8214),
+                bottomBarItem(context, 'ic_run', 'steps', 8214),
                 SizedBox(
                     height: 30,
                     child: VerticalDivider(
                       color: ColorPalette.negativeColor,
                       width: 1,
                     )),
-                bottomBarItem('ic_fire', 'cal', 8214),
+                bottomBarItem(context, 'ic_fire', 'cal', 8214),
                 SizedBox(
                     height: 30,
                     child: VerticalDivider(
                       color: ColorPalette.negativeColor,
                       width: 1,
                     )),
-                bottomBarItem('ic_distance', 'km', 8214),
+                bottomBarItem(context, 'ic_distance', 'km', 8214),
               ],
             ),
           )
@@ -138,7 +139,7 @@ class WorkoutScreen extends StatelessWidget {
     );
   }
 
-  Widget bottomBarItem(String icon, String title, double value) {
+  Widget bottomBarItem(BuildContext context, String icon, String title, double value) {
     return Container(
       child: Row(
         children: <Widget>[
@@ -158,7 +159,7 @@ class WorkoutScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 18),
               ),
               Text(
-                title,
+                AppLocalizations.of(context).translate(title),
                 style:
                     TextStyle(color: ColorPalette.negativeColor, fontSize: 16),
               )

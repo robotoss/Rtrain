@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:r_train/localizations/app_localizations.dart';
 import 'package:r_train/theme/main_theme.dart';
 
 Widget gradientAppBar(BuildContext context, String title) {
@@ -15,7 +16,7 @@ Widget gradientAppBar(BuildContext context, String title) {
           children: <Widget>[
             Icon(Icons.menu, color: Colors.white,),
             Text(
-                title,
+                AppLocalizations.of(context).translate(title),
                 style: TextStyle(
                     fontSize: 20.0, fontWeight: FontWeight.w500, color: Colors.white),
               ),
