@@ -34,8 +34,6 @@ dependencies:
   flutter_bloc: ^4.0.0
   equatable: ^1.1.1
   flutter_svg: ^0.17.4
-  syncfusion_flutter_charts: ^18.1.48
-  syncfusion_flutter_gauges: ^18.1.42
 
 dev_dependencies:
   flutter_test:
