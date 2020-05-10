@@ -107,7 +107,7 @@ class WorkoutScreen extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 5),
+            padding: const EdgeInsets.symmetric(vertical: 5),
             child: Divider(color: ColorPalette.negativeColor),
           ),
           Container(
