@@ -9,14 +9,13 @@ import 'package:r_train/widgets/drawer/drawer_widget.dart';
 import 'bloc/workout_bloc.dart';
 
 class WorkoutScreen extends StatelessWidget {
-
   static GlobalKey<ScaffoldState> drawerKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WorkoutBloc>(
       create: (context) {
-        return WorkoutBloc();
+        return WorkoutBloc()..add(WorkoutLaodMainDataEvent());
       },
       child: BlocBuilder<WorkoutBloc, WorkoutState>(builder: (context, state) {
         return Container(
@@ -29,17 +28,9 @@ class WorkoutScreen extends StatelessWidget {
               key: drawerKey,
               drawer: DrawerWidget(),
               body: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    SizedBox(height: 1),
-                    startButton(context),
-                    bottomInfoBar(context)
-                  ],
-                ),
-              ),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child: body(context, state)),
             ),
           ),
         );
@@ -47,9 +38,32 @@ class WorkoutScreen extends StatelessWidget {
     );
   }
 
+  Widget body(BuildContext context, WorkoutState state) {
+    if (state is WorkoutInitialState) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          SizedBox(height: 1),
+          startButton(context),
+          bottomInfoBar(context)
+        ],
+      );
+    } else if (state is WorkoutActiveState) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          SizedBox(height: 1),
+          bottomInfoBar(context)
+        ],
+      );
+    } else {
+      return Container();
+    }
+  }
+
   Widget startButton(BuildContext context) {
     return GestureDetector(
-      onTap: () => print('Start'),
+      onTap: () => BlocProvider.of<WorkoutBloc>(context).add(StartButtonPressedEvent()),
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,
         height: MediaQuery.of(context).size.width / 1.5,
@@ -145,7 +159,8 @@ class WorkoutScreen extends StatelessWidget {
     );
   }
 
-  Widget bottomBarItem(BuildContext context, String icon, String title, double value) {
+  Widget bottomBarItem(
+      BuildContext context, String icon, String title, double value) {
     return Container(
       child: Row(
         children: <Widget>[

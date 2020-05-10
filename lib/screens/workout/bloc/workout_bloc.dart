@@ -9,12 +9,25 @@ part 'workout_state.dart';
 
 class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   @override
-  WorkoutState get initialState => WorkoutInitial();
+  WorkoutState get initialState => WorkoutLoadingState();
 
   @override
   Stream<WorkoutState> mapEventToState(
     WorkoutEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    if (event is WorkoutLaodMainDataEvent) {
+      yield* _buildWorkoutLaodMainDataEvent();
+    }
+    if (event is StartButtonPressedEvent) {
+      yield* _buildStartButtonPressedEvent();
+    }
+  }
+
+  Stream<WorkoutState> _buildWorkoutLaodMainDataEvent() async* {
+    yield WorkoutInitialState();
+  }
+
+  Stream<WorkoutState> _buildStartButtonPressedEvent() async* {
+    yield WorkoutActiveState();
   }
 }
