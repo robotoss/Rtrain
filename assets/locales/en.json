@@ -4,5 +4,7 @@
     "last_workout": "Last workout",
     "steps": "steps",
     "cal": "cal",
-    "km": "km"
+    "km": "km",
+    "total_distance": "Total Distance",
+    "total_burned": "Total Burned"
 }

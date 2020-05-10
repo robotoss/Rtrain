@@ -4,10 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:r_train/localizations/app_localizations.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/appBar/appBar_widget.dart';
+import 'package:r_train/widgets/drawer/drawer_widget.dart';
 
 import 'bloc/workout_bloc.dart';
 
 class WorkoutScreen extends StatelessWidget {
+
+  static GlobalKey<ScaffoldState> drawerKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WorkoutBloc>(
@@ -21,7 +25,9 @@ class WorkoutScreen extends StatelessWidget {
             top: false,
             child: Scaffold(
               backgroundColor: ColorPalette.mainBackground,
-              appBar: gradientAppBar(context, 'workout'),
+              appBar: gradientAppBar(context, 'workout', drawerKey),
+              key: drawerKey,
+              drawer: DrawerWidget(),
               body: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
