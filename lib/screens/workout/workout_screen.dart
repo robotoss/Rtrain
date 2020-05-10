@@ -5,6 +5,7 @@ import 'package:r_train/localizations/app_localizations.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/appBar/appBar_widget.dart';
 import 'package:r_train/widgets/drawer/drawer_widget.dart';
+import 'package:r_train/widgets/workout_timer/workout_timer_widget.dart';
 
 import 'bloc/workout_bloc.dart';
 
@@ -53,6 +54,7 @@ class WorkoutScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           SizedBox(height: 1),
+          WorkoutTimerWidget(),
           bottomInfoBar(context)
         ],
       );
