@@ -2,6 +2,24 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "_fe_analyzer_shared",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "analyzer",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-0.39.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "analyzer_plugin_fork",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer_plugin_fork-0.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "archive",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/archive-2.0.13",
       "packageUri": "lib/",
@@ -32,8 +50,38 @@
       "languageVersion": "2.4"
     },
     {
+      "name": "build",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/build-1.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "build_config",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/build_config-0.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "build_resolvers",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/build_resolvers-1.3.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "charcode",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/charcode-1.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "checked_yaml",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/checked_yaml-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
+      "name": "cli_util",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
@@ -56,16 +104,34 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "csslib",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/csslib-0.16.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-0.1.3",
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
     {
+      "name": "dart_style",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/dart_style-1.3.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
       "name": "equatable",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "ffi",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-0.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
     },
     {
       "name": "flutter",
@@ -98,6 +164,24 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "glob",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/glob-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "graphs",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/graphs-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "html",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.14.0+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "image",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.12",
       "packageUri": "lib/",
@@ -108,6 +192,24 @@
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1",
       "packageUri": "lib/",
       "languageVersion": "2.5"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "1.19"
+    },
+    {
+      "name": "json_annotation",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/json_annotation-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "logging",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "matcher",
@@ -122,10 +224,52 @@
       "languageVersion": "1.12"
     },
     {
+      "name": "moor",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/moor-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "moor_ffi",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/moor_ffi-0.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "moor_flutter",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/moor_flutter-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "moor_generator",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/moor_generator-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
       "name": "nested",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/nested-0.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.2"
+    },
+    {
+      "name": "node_interop",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/node_interop-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "node_io",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/node_io-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
+      "name": "package_config",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/package_config-1.9.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
     },
     {
       "name": "path",
@@ -146,6 +290,12 @@
       "languageVersion": "1.19"
     },
     {
+      "name": "pedantic",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "petitparser",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-2.4.0",
       "packageUri": "lib/",
@@ -153,9 +303,21 @@
     },
     {
       "name": "provider",
-      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/provider-4.1.0",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/provider-4.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.7"
+    },
+    {
+      "name": "pub_semver",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/pub_semver-1.4.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "pubspec_parse",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/pubspec_parse-0.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
     },
     {
       "name": "quiver",
@@ -164,14 +326,44 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "recase",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/recase-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/zoxo/Documents/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "1.11"
     },
     {
+      "name": "source_gen",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/source_gen-0.9.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.5"
+    },
+    {
       "name": "source_span",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
+      "name": "sqflite",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.3.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "sqflite_common",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite_common-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "sqlparser",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/sqlparser-0.8.1",
       "packageUri": "lib/",
       "languageVersion": "2.6"
     },
@@ -188,10 +380,22 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "stream_transform",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/stream_transform-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
       "name": "string_scanner",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.0"
+    },
+    {
+      "name": "synchronized",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/synchronized-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
     },
     {
       "name": "term_glyph",
@@ -218,10 +422,22 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "watcher",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/watcher-0.9.7+15",
+      "packageUri": "lib/",
+      "languageVersion": "2.2"
+    },
+    {
       "name": "xml",
       "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/xml-3.6.1",
       "packageUri": "lib/",
       "languageVersion": "2.6"
+    },
+    {
+      "name": "yaml",
+      "rootUri": "file:///Users/zoxo/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/yaml-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.4"
     },
     {
       "name": "r_train",
@@ -230,7 +446,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-05-14T16:52:44.419939Z",
+  "generated": "2020-05-14T17:06:06.072232Z",
   "generator": "pub",
   "generatorVersion": "2.8.2"
 }
