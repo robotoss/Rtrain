@@ -18,6 +18,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Set system orientation
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     return MaterialApp(
       title: 'Rtrainer',
       theme: ThemeData(
