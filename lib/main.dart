@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:r_train/database/database_rtrain_dao.dart';
 import 'package:r_train/main_bloc/auth/auth_bloc.dart';
+import 'package:r_train/theme/main_theme.dart';
 
 import 'localizations/app_localizations.dart';
 import 'screens/auth/auth_screen.dart';
@@ -40,10 +41,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Rtrainer',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: mainTheme,
       supportedLocales: [
         Locale('en', 'US'),
         Locale('ru', 'BY'),
