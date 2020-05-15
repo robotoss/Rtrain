@@ -8,6 +8,7 @@ import 'database_rtrain.dart';
 import 'package:path/path.dart' as p;
 
 part 'database_rtrain_dao.g.dart';
+part 'database_methods.dart';
 
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
@@ -28,13 +29,3 @@ class RtrainDatabase extends _$RtrainDatabase {
   int get schemaVersion => 1;
 }
 
-@UseDao(
-    tables: [Users, RunningPrograms, ProgramSteps, TrainingTime])
-class RtrainBaseDao extends DatabaseAccessor<RtrainDatabase>
-    with _$RtrainBaseDaoMixin {
-  final RtrainDatabase db;
-
-  RtrainBaseDao(this.db) : super(db);
-
-  
-}
