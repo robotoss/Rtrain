@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'localizations/app_localizations.dart';
+import 'screens/auth/auth_screen.dart';
 import 'screens/workout/workout_screen.dart';
 
 void main() {
@@ -60,7 +61,7 @@ class MyApp extends StatelessWidget {
         // from the list (English, in this case).
         return supportedLocales.first;
       },
-      home: WorkoutScreen(),
+      home: AuthScreen(),
     );
   }
 }
