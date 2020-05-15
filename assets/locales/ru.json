@@ -7,5 +7,9 @@
     "km": "км",
     "total_distance": "Всего пройдено",
     "total_burned": "Всего созжено",
-    "greetings_to_you": "Приветствую вас."
+    "greetings_to_you": "Приветствую вас.",
+    "how_can_i_call_you": "Как могу к вам обращаться?",
+    "your_name": "Ваше имя",
+    "please_choose_an_avatar": "Пожалуйста, выберите аватар",
+    "enter": "Войти"
 }

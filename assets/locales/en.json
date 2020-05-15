@@ -7,5 +7,9 @@
     "km": "km",
     "total_distance": "Total Distance",
     "total_burned": "Total Burned",
-    "greetings_to_you": "Greetings to you."
+    "greetings_to_you": "Greetings to you.",
+    "how_can_i_call_you": "How can I call you?",
+    "your_name": "Your name",
+    "please_choose_an_avatar": "Please choose an avatar",
+    "enter": "Enter"
 }
