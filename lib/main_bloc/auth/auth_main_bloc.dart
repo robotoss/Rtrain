@@ -6,33 +6,33 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:r_train/database/database_rtrain_dao.dart';
 
-part 'auth_event.dart';
-part 'auth_state.dart';
+part 'auth_main_event.dart';
+part 'auth_main_state.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState> {
+class AuthMainBloc extends Bloc<AuthMainEvent, AuthMainState> {
   @override
-  AuthState get initialState => AuthUninitialized();
+  AuthMainState get initialState => AuthMainUninitialized();
 
   @override
-  Stream<AuthState> mapEventToState(
-    AuthEvent event,
+  Stream<AuthMainState> mapEventToState(
+    AuthMainEvent event,
   ) async* {
     if (event is AppStartedEvent) {
       final _dbProvider =
           Provider.of<RtrainBaseDao>(event.context, listen: false);
       try {
         await _dbProvider.getUser();
-        yield AuthUnauthenticated();
+        yield AuthMainUnauthenticated();
       } catch (error) {
-        yield AuthUnauthenticated();
+        yield AuthMainUnauthenticated();
       }
     }
 
     if (event is LoggedInEvent) {
-      yield AuthAuthenticated();
+      yield AuthMainAuthMainenticated();
     }
     if (event is LoggedOutEvent) {
-      yield AuthUnauthenticated();
+      yield AuthMainUnauthenticated();
     }
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:r_train/database/database_rtrain_dao.dart';
-import 'package:r_train/main_bloc/auth/auth_bloc.dart';
+import 'package:r_train/main_bloc/auth/auth_main_bloc.dart';
 import 'package:r_train/theme/main_theme.dart';
 
 import 'localizations/app_localizations.dart';
@@ -22,9 +22,9 @@ void main() {
     create: (_) => RtrainDatabase().rtrainBaseDao,
     child: MultiBlocProvider(
       providers: [
-        BlocProvider<AuthBloc>(
+        BlocProvider<AuthMainBloc>(
           create: (BuildContext context) =>
-              AuthBloc()..add(AppStartedEvent(context: context)),
+              AuthMainBloc()..add(AppStartedEvent(context: context)),
         ),
       ],
       child: MyApp(),
@@ -74,14 +74,14 @@ class MyApp extends StatelessWidget {
         // from the list (English, in this case).
         return supportedLocales.first;
       },
-      home: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-        if (state is AuthUninitialized) {
+      home: BlocBuilder<AuthMainBloc, AuthMainState>(builder: (context, state) {
+        if (state is AuthMainUninitialized) {
           return Container();
         }
-        if (state is AuthAuthenticated) {
+        if (state is AuthMainAuthMainenticated) {
           return Container();
         }
-        if (state is AuthUnauthenticated) {
+        if (state is AuthMainUnauthenticated) {
           return AuthScreen();
         } else {
           return Container();

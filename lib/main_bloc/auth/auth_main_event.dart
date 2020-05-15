@@ -1,13 +1,13 @@
-part of 'auth_bloc.dart';
+part of 'auth_main_bloc.dart';
 
-abstract class AuthEvent extends Equatable {
-  const AuthEvent();
+abstract class AuthMainEvent extends Equatable {
+  const AuthMainEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class AppStartedEvent extends AuthEvent {
+class AppStartedEvent extends AuthMainEvent {
   final BuildContext context;
   const AppStartedEvent({@required this.context});
 
@@ -18,9 +18,9 @@ class AppStartedEvent extends AuthEvent {
   String toString() => 'AppStartedEvent { context: $context }';
 }
 
-class LoggedInEvent extends AuthEvent {}
+class LoggedInEvent extends AuthMainEvent {}
 
-class LoggedOutEvent extends AuthEvent {
+class LoggedOutEvent extends AuthMainEvent {
   final BuildContext context;
   const LoggedOutEvent({@required this.context});
 
