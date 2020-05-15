@@ -4,6 +4,7 @@ import 'package:moor/moor.dart';
 class Users extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get userName => text()();
+  TextColumn get userImg => text()();
 
   @override
   Set<Column> get primaryKey => {id};
@@ -23,9 +24,10 @@ class ProgramSteps extends Table {
   IntColumn get id => integer().autoIncrement()();
   IntColumn get runningProgramId => integer()();
   IntColumn get day => integer()();
-  IntColumn get distance => integer()();
-  IntColumn get calories => integer()();
-  BoolColumn get stepFinish => boolean()();
+  IntColumn get distance => integer().nullable()();
+  IntColumn get calories => integer().nullable()();
+  BoolColumn get stepFinish => boolean().withDefault(Constant(false))();
+  DateTimeColumn get finishDate => dateTime().nullable()();
 
   @override
   Set<Column> get primaryKey => {id};
@@ -36,7 +38,7 @@ class TrainingTime extends Table {
   IntColumn get id => integer().autoIncrement()();
   IntColumn get programStepsId => integer()();
   IntColumn get seconds => integer()();
-  BoolColumn get timeFinished => boolean()();
+  BoolColumn get timeFinished => boolean().withDefault(Constant(false))();
 
   @override
   Set<Column> get primaryKey => {id};

@@ -42,6 +42,7 @@ dependencies:
 
 dev_dependencies:
   moor_generator: ^3.0.0
+  build_runner:
   flutter_test:
     sdk: flutter
 
