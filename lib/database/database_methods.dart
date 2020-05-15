@@ -11,8 +11,10 @@ class RtrainBaseDao extends DatabaseAccessor<RtrainDatabase>
   /// User
   ///
 
-  Future<List<User>> getUser() async =>
-      await (select(users)..where((tbl) => tbl.id.equals(0))).get();
+  Future<User> getUser() async {
+    var allUsers = await select(users).get();
+    return allUsers[0];
+  }
 
   Future insertUser(User user) => into(users).insert(user);
 

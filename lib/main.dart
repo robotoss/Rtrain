@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
           return Container();
         }
         if (state is AuthMainAuthMainenticated) {
-          return Container();
+          return WorkoutScreen();
         }
         if (state is AuthMainUnauthenticated) {
           return AuthScreen();

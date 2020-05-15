@@ -22,7 +22,7 @@ class AuthMainBloc extends Bloc<AuthMainEvent, AuthMainState> {
           Provider.of<RtrainBaseDao>(event.context, listen: false);
       try {
         await _dbProvider.getUser();
-        yield AuthMainUnauthenticated();
+        yield AuthMainAuthMainenticated();
       } catch (error) {
         yield AuthMainUnauthenticated();
       }

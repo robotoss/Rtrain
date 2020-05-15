@@ -11,5 +11,6 @@
     "how_can_i_call_you": "Как могу к вам обращаться?",
     "your_name": "Ваше имя",
     "please_choose_an_avatar": "Пожалуйста, выберите аватар",
-    "enter": "Войти"
+    "enter": "Войти",
+    "failed_enter_name": "Пожалуйста заполните Имя"
 }

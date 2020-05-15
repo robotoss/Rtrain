@@ -11,5 +11,6 @@
     "how_can_i_call_you": "How can I call you?",
     "your_name": "Your name",
     "please_choose_an_avatar": "Please choose an avatar",
-    "enter": "Enter"
+    "enter": "Enter",
+    "failed_enter_name": "Please enter Name"
 }

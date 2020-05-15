@@ -7,9 +7,23 @@ abstract class AuthState extends Equatable {
   List<Object> get props => [];
 }
 
-class AuthInitialState extends AuthState {}
+class AuthInitialState extends AuthState {
+  final TextEditingController textEditingController;
+  final int activeAvatar;
 
-class WorkoutTimerLoadingState extends AuthState {}
+  const AuthInitialState(
+      {@required this.textEditingController, 
+      @required this.activeAvatar});
+
+  @override
+  List<Object> get props => [textEditingController, activeAvatar];
+
+  @override
+  String toString() =>
+      'AuthFailureState { textEditingController: $textEditingController, activeAvatar: $activeAvatar }';
+}
+
+class Auth extends AuthState {}
 
 class AuthFailureState extends AuthState {
   final String error;
