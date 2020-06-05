@@ -10,16 +10,42 @@ class RtrainBaseDao extends DatabaseAccessor<RtrainDatabase>
   ///
   /// User
   ///
-  
+
   Future<User> getUser() {
-  return (select(users)..where((t) => t.id.equals(0))).getSingle();
-}
+    return (select(users)..where((t) => t.id.equals(0))).getSingle();
+  }
 
   Future insertUser(User user) => into(users).insert(user);
 
   Future deleteUser(User user) => delete(users).delete(user);
 
   ///
-  /// Test
+  /// Programs
   ///
+
+  Future<List<RunningProgram>> getAllPrograms() =>
+      select(runningPrograms).get();
+
+  Future insertRunningProgram(RunningProgram program) =>
+      into(runningPrograms).insert(program);
+
+  ///
+  /// Programs steps
+  ///
+
+  Future<void> insertMultipleProgramsSteps(List<ProgramStep> programStepsList) async {
+    await batch((batch) {
+      batch.insertAll(programSteps, programStepsList);
+    });
+  }
+
+  ///
+  /// Programs time parts
+  ///
+
+  Future<void> insertMultipleTimeParts(List<TrainingTimeData> timePartsList) async {
+    await batch((batch) {
+      batch.insertAll(trainingTime, timePartsList);
+    });
+  }
 }

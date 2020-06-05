@@ -405,6 +405,7 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
   final int day;
   final int distance;
   final int calories;
+  final bool isRest;
   final bool stepFinish;
   final DateTime finishDate;
   ProgramStep(
@@ -413,6 +414,7 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
       @required this.day,
       this.distance,
       this.calories,
+      @required this.isRest,
       @required this.stepFinish,
       this.finishDate});
   factory ProgramStep.fromData(Map<String, dynamic> data, GeneratedDatabase db,
@@ -430,6 +432,8 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
           intType.mapFromDatabaseResponse(data['${effectivePrefix}distance']),
       calories:
           intType.mapFromDatabaseResponse(data['${effectivePrefix}calories']),
+      isRest:
+          boolType.mapFromDatabaseResponse(data['${effectivePrefix}is_rest']),
       stepFinish: boolType
           .mapFromDatabaseResponse(data['${effectivePrefix}step_finish']),
       finishDate: dateTimeType
@@ -454,6 +458,9 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
     if (!nullToAbsent || calories != null) {
       map['calories'] = Variable<int>(calories);
     }
+    if (!nullToAbsent || isRest != null) {
+      map['is_rest'] = Variable<bool>(isRest);
+    }
     if (!nullToAbsent || stepFinish != null) {
       map['step_finish'] = Variable<bool>(stepFinish);
     }
@@ -472,6 +479,7 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
       day: serializer.fromJson<int>(json['day']),
       distance: serializer.fromJson<int>(json['distance']),
       calories: serializer.fromJson<int>(json['calories']),
+      isRest: serializer.fromJson<bool>(json['isRest']),
       stepFinish: serializer.fromJson<bool>(json['stepFinish']),
       finishDate: serializer.fromJson<DateTime>(json['finishDate']),
     );
@@ -485,6 +493,7 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
       'day': serializer.toJson<int>(day),
       'distance': serializer.toJson<int>(distance),
       'calories': serializer.toJson<int>(calories),
+      'isRest': serializer.toJson<bool>(isRest),
       'stepFinish': serializer.toJson<bool>(stepFinish),
       'finishDate': serializer.toJson<DateTime>(finishDate),
     };
@@ -496,6 +505,7 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
           int day,
           int distance,
           int calories,
+          bool isRest,
           bool stepFinish,
           DateTime finishDate}) =>
       ProgramStep(
@@ -504,6 +514,7 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
         day: day ?? this.day,
         distance: distance ?? this.distance,
         calories: calories ?? this.calories,
+        isRest: isRest ?? this.isRest,
         stepFinish: stepFinish ?? this.stepFinish,
         finishDate: finishDate ?? this.finishDate,
       );
@@ -515,6 +526,7 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
           ..write('day: $day, ')
           ..write('distance: $distance, ')
           ..write('calories: $calories, ')
+          ..write('isRest: $isRest, ')
           ..write('stepFinish: $stepFinish, ')
           ..write('finishDate: $finishDate')
           ..write(')'))
@@ -530,8 +542,12 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
               day.hashCode,
               $mrjc(
                   distance.hashCode,
-                  $mrjc(calories.hashCode,
-                      $mrjc(stepFinish.hashCode, finishDate.hashCode)))))));
+                  $mrjc(
+                      calories.hashCode,
+                      $mrjc(
+                          isRest.hashCode,
+                          $mrjc(
+                              stepFinish.hashCode, finishDate.hashCode))))))));
   @override
   bool operator ==(dynamic other) =>
       identical(this, other) ||
@@ -541,6 +557,7 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
           other.day == this.day &&
           other.distance == this.distance &&
           other.calories == this.calories &&
+          other.isRest == this.isRest &&
           other.stepFinish == this.stepFinish &&
           other.finishDate == this.finishDate);
 }
@@ -551,6 +568,7 @@ class ProgramStepsCompanion extends UpdateCompanion<ProgramStep> {
   final Value<int> day;
   final Value<int> distance;
   final Value<int> calories;
+  final Value<bool> isRest;
   final Value<bool> stepFinish;
   final Value<DateTime> finishDate;
   const ProgramStepsCompanion({
@@ -559,6 +577,7 @@ class ProgramStepsCompanion extends UpdateCompanion<ProgramStep> {
     this.day = const Value.absent(),
     this.distance = const Value.absent(),
     this.calories = const Value.absent(),
+    this.isRest = const Value.absent(),
     this.stepFinish = const Value.absent(),
     this.finishDate = const Value.absent(),
   });
@@ -568,16 +587,19 @@ class ProgramStepsCompanion extends UpdateCompanion<ProgramStep> {
     @required int day,
     this.distance = const Value.absent(),
     this.calories = const Value.absent(),
+    @required bool isRest,
     this.stepFinish = const Value.absent(),
     this.finishDate = const Value.absent(),
   })  : runningProgramId = Value(runningProgramId),
-        day = Value(day);
+        day = Value(day),
+        isRest = Value(isRest);
   static Insertable<ProgramStep> custom({
     Expression<int> id,
     Expression<int> runningProgramId,
     Expression<int> day,
     Expression<int> distance,
     Expression<int> calories,
+    Expression<bool> isRest,
     Expression<bool> stepFinish,
     Expression<DateTime> finishDate,
   }) {
@@ -587,6 +609,7 @@ class ProgramStepsCompanion extends UpdateCompanion<ProgramStep> {
       if (day != null) 'day': day,
       if (distance != null) 'distance': distance,
       if (calories != null) 'calories': calories,
+      if (isRest != null) 'is_rest': isRest,
       if (stepFinish != null) 'step_finish': stepFinish,
       if (finishDate != null) 'finish_date': finishDate,
     });
@@ -598,6 +621,7 @@ class ProgramStepsCompanion extends UpdateCompanion<ProgramStep> {
       Value<int> day,
       Value<int> distance,
       Value<int> calories,
+      Value<bool> isRest,
       Value<bool> stepFinish,
       Value<DateTime> finishDate}) {
     return ProgramStepsCompanion(
@@ -606,6 +630,7 @@ class ProgramStepsCompanion extends UpdateCompanion<ProgramStep> {
       day: day ?? this.day,
       distance: distance ?? this.distance,
       calories: calories ?? this.calories,
+      isRest: isRest ?? this.isRest,
       stepFinish: stepFinish ?? this.stepFinish,
       finishDate: finishDate ?? this.finishDate,
     );
@@ -628,6 +653,9 @@ class ProgramStepsCompanion extends UpdateCompanion<ProgramStep> {
     }
     if (calories.present) {
       map['calories'] = Variable<int>(calories.value);
+    }
+    if (isRest.present) {
+      map['is_rest'] = Variable<bool>(isRest.value);
     }
     if (stepFinish.present) {
       map['step_finish'] = Variable<bool>(stepFinish.value);
@@ -703,6 +731,18 @@ class $ProgramStepsTable extends ProgramSteps
     );
   }
 
+  final VerificationMeta _isRestMeta = const VerificationMeta('isRest');
+  GeneratedBoolColumn _isRest;
+  @override
+  GeneratedBoolColumn get isRest => _isRest ??= _constructIsRest();
+  GeneratedBoolColumn _constructIsRest() {
+    return GeneratedBoolColumn(
+      'is_rest',
+      $tableName,
+      false,
+    );
+  }
+
   final VerificationMeta _stepFinishMeta = const VerificationMeta('stepFinish');
   GeneratedBoolColumn _stepFinish;
   @override
@@ -726,8 +766,16 @@ class $ProgramStepsTable extends ProgramSteps
   }
 
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, runningProgramId, day, distance, calories, stepFinish, finishDate];
+  List<GeneratedColumn> get $columns => [
+        id,
+        runningProgramId,
+        day,
+        distance,
+        calories,
+        isRest,
+        stepFinish,
+        finishDate
+      ];
   @override
   $ProgramStepsTable get asDslTable => this;
   @override
@@ -764,6 +812,12 @@ class $ProgramStepsTable extends ProgramSteps
       context.handle(_caloriesMeta,
           calories.isAcceptableOrUnknown(data['calories'], _caloriesMeta));
     }
+    if (data.containsKey('is_rest')) {
+      context.handle(_isRestMeta,
+          isRest.isAcceptableOrUnknown(data['is_rest'], _isRestMeta));
+    } else if (isInserting) {
+      context.missing(_isRestMeta);
+    }
     if (data.containsKey('step_finish')) {
       context.handle(
           _stepFinishMeta,
@@ -798,17 +852,20 @@ class TrainingTimeData extends DataClass
   final int id;
   final int programStepsId;
   final int seconds;
+  final String type;
   final bool timeFinished;
   TrainingTimeData(
       {@required this.id,
       @required this.programStepsId,
       @required this.seconds,
+      @required this.type,
       @required this.timeFinished});
   factory TrainingTimeData.fromData(
       Map<String, dynamic> data, GeneratedDatabase db,
       {String prefix}) {
     final effectivePrefix = prefix ?? '';
     final intType = db.typeSystem.forDartType<int>();
+    final stringType = db.typeSystem.forDartType<String>();
     final boolType = db.typeSystem.forDartType<bool>();
     return TrainingTimeData(
       id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
@@ -816,6 +873,7 @@ class TrainingTimeData extends DataClass
           .mapFromDatabaseResponse(data['${effectivePrefix}program_steps_id']),
       seconds:
           intType.mapFromDatabaseResponse(data['${effectivePrefix}seconds']),
+      type: stringType.mapFromDatabaseResponse(data['${effectivePrefix}type']),
       timeFinished: boolType
           .mapFromDatabaseResponse(data['${effectivePrefix}time_finished']),
     );
@@ -832,6 +890,9 @@ class TrainingTimeData extends DataClass
     if (!nullToAbsent || seconds != null) {
       map['seconds'] = Variable<int>(seconds);
     }
+    if (!nullToAbsent || type != null) {
+      map['type'] = Variable<String>(type);
+    }
     if (!nullToAbsent || timeFinished != null) {
       map['time_finished'] = Variable<bool>(timeFinished);
     }
@@ -845,6 +906,7 @@ class TrainingTimeData extends DataClass
       id: serializer.fromJson<int>(json['id']),
       programStepsId: serializer.fromJson<int>(json['programStepsId']),
       seconds: serializer.fromJson<int>(json['seconds']),
+      type: serializer.fromJson<String>(json['type']),
       timeFinished: serializer.fromJson<bool>(json['timeFinished']),
     );
   }
@@ -855,16 +917,22 @@ class TrainingTimeData extends DataClass
       'id': serializer.toJson<int>(id),
       'programStepsId': serializer.toJson<int>(programStepsId),
       'seconds': serializer.toJson<int>(seconds),
+      'type': serializer.toJson<String>(type),
       'timeFinished': serializer.toJson<bool>(timeFinished),
     };
   }
 
   TrainingTimeData copyWith(
-          {int id, int programStepsId, int seconds, bool timeFinished}) =>
+          {int id,
+          int programStepsId,
+          int seconds,
+          String type,
+          bool timeFinished}) =>
       TrainingTimeData(
         id: id ?? this.id,
         programStepsId: programStepsId ?? this.programStepsId,
         seconds: seconds ?? this.seconds,
+        type: type ?? this.type,
         timeFinished: timeFinished ?? this.timeFinished,
       );
   @override
@@ -873,6 +941,7 @@ class TrainingTimeData extends DataClass
           ..write('id: $id, ')
           ..write('programStepsId: $programStepsId, ')
           ..write('seconds: $seconds, ')
+          ..write('type: $type, ')
           ..write('timeFinished: $timeFinished')
           ..write(')'))
         .toString();
@@ -881,8 +950,10 @@ class TrainingTimeData extends DataClass
   @override
   int get hashCode => $mrjf($mrjc(
       id.hashCode,
-      $mrjc(programStepsId.hashCode,
-          $mrjc(seconds.hashCode, timeFinished.hashCode))));
+      $mrjc(
+          programStepsId.hashCode,
+          $mrjc(
+              seconds.hashCode, $mrjc(type.hashCode, timeFinished.hashCode)))));
   @override
   bool operator ==(dynamic other) =>
       identical(this, other) ||
@@ -890,6 +961,7 @@ class TrainingTimeData extends DataClass
           other.id == this.id &&
           other.programStepsId == this.programStepsId &&
           other.seconds == this.seconds &&
+          other.type == this.type &&
           other.timeFinished == this.timeFinished);
 }
 
@@ -897,30 +969,36 @@ class TrainingTimeCompanion extends UpdateCompanion<TrainingTimeData> {
   final Value<int> id;
   final Value<int> programStepsId;
   final Value<int> seconds;
+  final Value<String> type;
   final Value<bool> timeFinished;
   const TrainingTimeCompanion({
     this.id = const Value.absent(),
     this.programStepsId = const Value.absent(),
     this.seconds = const Value.absent(),
+    this.type = const Value.absent(),
     this.timeFinished = const Value.absent(),
   });
   TrainingTimeCompanion.insert({
     this.id = const Value.absent(),
     @required int programStepsId,
     @required int seconds,
+    @required String type,
     this.timeFinished = const Value.absent(),
   })  : programStepsId = Value(programStepsId),
-        seconds = Value(seconds);
+        seconds = Value(seconds),
+        type = Value(type);
   static Insertable<TrainingTimeData> custom({
     Expression<int> id,
     Expression<int> programStepsId,
     Expression<int> seconds,
+    Expression<String> type,
     Expression<bool> timeFinished,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (programStepsId != null) 'program_steps_id': programStepsId,
       if (seconds != null) 'seconds': seconds,
+      if (type != null) 'type': type,
       if (timeFinished != null) 'time_finished': timeFinished,
     });
   }
@@ -929,11 +1007,13 @@ class TrainingTimeCompanion extends UpdateCompanion<TrainingTimeData> {
       {Value<int> id,
       Value<int> programStepsId,
       Value<int> seconds,
+      Value<String> type,
       Value<bool> timeFinished}) {
     return TrainingTimeCompanion(
       id: id ?? this.id,
       programStepsId: programStepsId ?? this.programStepsId,
       seconds: seconds ?? this.seconds,
+      type: type ?? this.type,
       timeFinished: timeFinished ?? this.timeFinished,
     );
   }
@@ -949,6 +1029,9 @@ class TrainingTimeCompanion extends UpdateCompanion<TrainingTimeData> {
     }
     if (seconds.present) {
       map['seconds'] = Variable<int>(seconds.value);
+    }
+    if (type.present) {
+      map['type'] = Variable<String>(type.value);
     }
     if (timeFinished.present) {
       map['time_finished'] = Variable<bool>(timeFinished.value);
@@ -997,6 +1080,18 @@ class $TrainingTimeTable extends TrainingTime
     );
   }
 
+  final VerificationMeta _typeMeta = const VerificationMeta('type');
+  GeneratedTextColumn _type;
+  @override
+  GeneratedTextColumn get type => _type ??= _constructType();
+  GeneratedTextColumn _constructType() {
+    return GeneratedTextColumn(
+      'type',
+      $tableName,
+      false,
+    );
+  }
+
   final VerificationMeta _timeFinishedMeta =
       const VerificationMeta('timeFinished');
   GeneratedBoolColumn _timeFinished;
@@ -1010,7 +1105,7 @@ class $TrainingTimeTable extends TrainingTime
 
   @override
   List<GeneratedColumn> get $columns =>
-      [id, programStepsId, seconds, timeFinished];
+      [id, programStepsId, seconds, type, timeFinished];
   @override
   $TrainingTimeTable get asDslTable => this;
   @override
@@ -1038,6 +1133,12 @@ class $TrainingTimeTable extends TrainingTime
           seconds.isAcceptableOrUnknown(data['seconds'], _secondsMeta));
     } else if (isInserting) {
       context.missing(_secondsMeta);
+    }
+    if (data.containsKey('type')) {
+      context.handle(
+          _typeMeta, type.isAcceptableOrUnknown(data['type'], _typeMeta));
+    } else if (isInserting) {
+      context.missing(_typeMeta);
     }
     if (data.containsKey('time_finished')) {
       context.handle(
