@@ -39,6 +39,9 @@ class RtrainBaseDao extends DatabaseAccessor<RtrainDatabase>
     });
   }
 
+  Future<List<ProgramStep>> getProgramsSteps() =>
+      select(programSteps).get();
+
   ///
   /// Programs time parts
   ///
