@@ -10,7 +10,6 @@ import 'package:r_train/theme/main_theme.dart';
 import 'localizations/app_localizations.dart';
 import 'screens/auth/auth_screen.dart';
 import 'screens/calendar/calendar_screen.dart';
-import 'screens/workout/workout_screen.dart';
 
 void main() {
   //System statusbar theme

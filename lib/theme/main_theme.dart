@@ -19,4 +19,5 @@ class ColorPalette {
   static var mainBackground = const Color(0xFF3D4351);
   static var negativeColor = const Color(0xFF75829B);
   static var lightColor = const Color(0xFFB8ADAF);
+  static var stepCalendarBackground = const Color(0xFF525A6E);
 }
