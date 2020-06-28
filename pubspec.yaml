@@ -39,6 +39,7 @@ dependencies:
   moor_ffi: ^0.5.0
   provider: ^4.1.1
   path_provider: ^1.6.8
+  pedometer: ^1.2.0
 
 dev_dependencies:
   moor_generator: ^3.0.0

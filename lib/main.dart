@@ -5,9 +5,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:r_train/database/database_rtrain_dao.dart';
 import 'package:r_train/main_bloc/auth/auth_main_bloc.dart';
+
 import 'package:r_train/theme/main_theme.dart';
 
 import 'localizations/app_localizations.dart';
+import 'main_bloc/train/train_main_bloc.dart';
 import 'screens/auth/auth_screen.dart';
 import 'screens/calendar/calendar_screen.dart';
 
@@ -25,6 +27,9 @@ void main() {
         BlocProvider<AuthMainBloc>(
           create: (BuildContext context) =>
               AuthMainBloc()..add(AppStartedEvent(context: context)),
+        ),
+        BlocProvider<TrainMainBloc>(
+          create: (BuildContext context) => TrainMainBloc(),
         ),
       ],
       child: MyApp(),
