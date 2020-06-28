@@ -47,11 +47,11 @@ class AuthMainBloc extends Bloc<AuthMainEvent, AuthMainState> {
 
   Stream<AuthMainState> _buildAddDataToDatabaseEvent(RtrainBaseDao _dbProvider) async* {
     //Add new program
-    _dbProvider.insertRunningProgram(RunningProgram(id: 0, programName:  '5_km'));
+   await _dbProvider.insertRunningProgram(RunningProgram(id: 0, programName:  '5_km'));
     //Add new steps
-    _dbProvider.insertMultipleProgramsSteps(programSteps5Km);
+    await _dbProvider.insertMultipleProgramsSteps(programSteps5Km);
     //Add new ttaning time
-    _dbProvider.insertMultipleTimeParts(trainingTime5Km);
+    await _dbProvider.insertMultipleTimeParts(trainingTime5Km);
 
   }
 }

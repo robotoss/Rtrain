@@ -79,9 +79,9 @@ class CalendarScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) => WorkoutScreen()));
+                        builder: (BuildContext context) => WorkoutScreen()));
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width - 60,
@@ -89,7 +89,9 @@ class CalendarScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                         color: ColorPalette.stepCalendarBackground),
-                    child: programStep.isRest ?  restField(context) : workField(context, programStep),
+                    child: programStep.isRest
+                        ? restField(context)
+                        : workField(context, programStep),
                   ),
                 ),
               )
@@ -100,44 +102,55 @@ class CalendarScreen extends StatelessWidget {
                   height: 50,
                   width: 17,
                   child: VerticalDivider(width: 1, color: Colors.white))
-              : SizedBox(height: 20,)
+              : SizedBox(
+                  height: 20,
+                )
         ],
       ),
     );
   }
 
-  Widget restField(BuildContext context){
+  Widget restField(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 10, top: 15, bottom: 15),
       child: Row(
         children: <Widget>[
-          SvgPicture.asset('assets/icons_svg/ic_rest.svg', height: 30,),
+          SvgPicture.asset(
+            'assets/icons_svg/ic_rest.svg',
+            height: 30,
+          ),
           Text(
-             AppLocalizations.of(context).translate('rest'),
-             style: TextStyle(
-               fontSize: 20,
-               fontWeight: FontWeight.w600,
-               color: Colors.white
-             ),
+            AppLocalizations.of(context).translate('rest'),
+            style: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
           ),
         ],
       ),
     );
   }
 
-  Widget workField(BuildContext context, ProgramStep programStep){
+  Widget workField(BuildContext context, ProgramStep programStep) {
+    int _week = programStep.id ~/ 7 + 1;
+    int _day = (programStep.id - ((_week - 1) * 7)) ~/ 2 + 1;
+
     return Padding(
       padding: const EdgeInsets.only(left: 10),
       child: Row(
         children: <Widget>[
-          SvgPicture.asset('assets/icons_svg/ic_runner.svg', height: 30,),
-          Text(' Lvl 1 10 %',
-          style: TextStyle(
-             fontSize: 20,
-             fontWeight: FontWeight.w600,
-             color: Colors.white
-           ),),
-          
+          SvgPicture.asset(
+            'assets/icons_svg/ic_runner.svg',
+            height: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(
+              '${AppLocalizations.of(context).translate('week')} $_week, ${AppLocalizations.of(context).translate('day')} $_day',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white),
+            ),
+          ),
         ],
       ),
     );
