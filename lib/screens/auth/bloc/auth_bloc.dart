@@ -13,12 +13,9 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthMainBloc authMainBloc;
-
-  AuthBloc({@required this.authMainBloc});
-
-  @override
-  AuthState get initialState => AuthInitialState(
-      textEditingController: nameTextController, activeAvatar: activeAvatar);
+  AuthBloc({@required this.authMainBloc})
+      : super(AuthInitialState(
+            textEditingController: TextEditingController(), activeAvatar: 1));
 
   TextEditingController nameTextController = TextEditingController();
 
@@ -50,9 +47,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield AuthFailureState(error: 'failed_enter_name');
     } else {
       await _dbProvider.insertUser(User(
-        id: 0, 
-        userName: nameTextController.text, 
-        userImg: '128_$activeAvatar.png'));
+          id: 0,
+          userName: nameTextController.text,
+          userImg: '128_$activeAvatar.png'));
 
       authMainBloc.add(LoggedInEvent());
     }

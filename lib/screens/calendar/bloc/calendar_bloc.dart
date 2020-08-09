@@ -10,9 +10,7 @@ part 'calendar_event.dart';
 part 'calendar_state.dart';
 
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
-  @override
-  CalendarState get initialState =>
-      CalendarInitialState(programSteps: programSteps);
+  CalendarBloc() : super(CalendarInitialState(programSteps: List()));
 
   List<ProgramStep> programSteps = List();
 

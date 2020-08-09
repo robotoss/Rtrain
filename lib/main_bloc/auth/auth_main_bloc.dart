@@ -11,8 +11,7 @@ part 'auth_main_event.dart';
 part 'auth_main_state.dart';
 
 class AuthMainBloc extends Bloc<AuthMainEvent, AuthMainState> {
-  @override
-  AuthMainState get initialState => AuthMainUninitialized();
+  AuthMainBloc() : super(AuthMainUninitialized());
 
   @override
   Stream<AuthMainState> mapEventToState(
@@ -45,13 +44,14 @@ class AuthMainBloc extends Bloc<AuthMainEvent, AuthMainState> {
     }
   }
 
-  Stream<AuthMainState> _buildAddDataToDatabaseEvent(RtrainBaseDao _dbProvider) async* {
+  Stream<AuthMainState> _buildAddDataToDatabaseEvent(
+      RtrainBaseDao _dbProvider) async* {
     //Add new program
-   await _dbProvider.insertRunningProgram(RunningProgram(id: 0, programName:  '5_km'));
+    await _dbProvider
+        .insertRunningProgram(RunningProgram(id: 0, programName: '5_km'));
     //Add new steps
     await _dbProvider.insertMultipleProgramsSteps(programSteps5Km);
     //Add new ttaning time
     await _dbProvider.insertMultipleTimeParts(trainingTime5Km);
-
   }
 }

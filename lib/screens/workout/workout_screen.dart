@@ -16,7 +16,7 @@ class WorkoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<WorkoutBloc>(
       create: (context) {
-        return WorkoutBloc()..add(WorkoutLaodMainDataEvent());
+        return WorkoutBloc()..add(WorkoutLoadMainDataEvent());
       },
       child: BlocBuilder<WorkoutBloc, WorkoutState>(builder: (context, state) {
         return Container(
@@ -65,7 +65,8 @@ class WorkoutScreen extends StatelessWidget {
 
   Widget startButton(BuildContext context) {
     return GestureDetector(
-      onTap: () => BlocProvider.of<WorkoutBloc>(context).add(StartButtonPressedEvent()),
+      onTap: () =>
+          BlocProvider.of<WorkoutBloc>(context).add(StartButtonPressedEvent()),
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,
         height: MediaQuery.of(context).size.width / 1.5,

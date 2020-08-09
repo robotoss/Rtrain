@@ -8,9 +8,8 @@ part 'workout_timer_event.dart';
 part 'workout_timer_state.dart';
 
 class WorkoutTimerBloc extends Bloc<WorkoutTimerEvent, WorkoutTimerState> {
-  @override
-  WorkoutTimerState get initialState =>
-      WorkoutTimerInitialState(percent: percent, duration: startTime);
+  WorkoutTimerBloc()
+      : super(WorkoutTimerInitialState(percent: 0.0, duration: 60));
 
   double percent = 0.0;
 
@@ -34,16 +33,15 @@ class WorkoutTimerBloc extends Bloc<WorkoutTimerEvent, WorkoutTimerState> {
   Stream<WorkoutTimerState> _buildStartTimerEvent() async* {
     duration = startTime;
     timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
-      double onePercent = 100 /startTime;
+      double onePercent = 100 / startTime;
       if (duration == 0) {
         timer.cancel();
         percent = 100;
-         add(UpdateTimerEvent());
+        add(UpdateTimerEvent());
       } else {
         duration = duration - 1;
         percent = (startTime - duration) * onePercent;
         add(UpdateTimerEvent());
-        
       }
     });
   }
