@@ -40,6 +40,18 @@ class User extends DataClass implements Insertable<User> {
     return map;
   }
 
+  UsersCompanion toCompanion(bool nullToAbsent) {
+    return UsersCompanion(
+      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      userName: userName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(userName),
+      userImg: userImg == null && nullToAbsent
+          ? const Value.absent()
+          : Value(userImg),
+    );
+  }
+
   factory User.fromJson(Map<String, dynamic> json,
       {ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
@@ -135,6 +147,16 @@ class UsersCompanion extends UpdateCompanion<User> {
       map['user_img'] = Variable<String>(userImg.value);
     }
     return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('UsersCompanion(')
+          ..write('id: $id, ')
+          ..write('userName: $userName, ')
+          ..write('userImg: $userImg')
+          ..write(')'))
+        .toString();
   }
 }
 
@@ -248,6 +270,15 @@ class RunningProgram extends DataClass implements Insertable<RunningProgram> {
     return map;
   }
 
+  RunningProgramsCompanion toCompanion(bool nullToAbsent) {
+    return RunningProgramsCompanion(
+      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      programName: programName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(programName),
+    );
+  }
+
   factory RunningProgram.fromJson(Map<String, dynamic> json,
       {ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
@@ -327,6 +358,15 @@ class RunningProgramsCompanion extends UpdateCompanion<RunningProgram> {
       map['program_name'] = Variable<String>(programName.value);
     }
     return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('RunningProgramsCompanion(')
+          ..write('id: $id, ')
+          ..write('programName: $programName')
+          ..write(')'))
+        .toString();
   }
 }
 
@@ -468,6 +508,30 @@ class ProgramStep extends DataClass implements Insertable<ProgramStep> {
       map['finish_date'] = Variable<DateTime>(finishDate);
     }
     return map;
+  }
+
+  ProgramStepsCompanion toCompanion(bool nullToAbsent) {
+    return ProgramStepsCompanion(
+      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      runningProgramId: runningProgramId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(runningProgramId),
+      day: day == null && nullToAbsent ? const Value.absent() : Value(day),
+      distance: distance == null && nullToAbsent
+          ? const Value.absent()
+          : Value(distance),
+      calories: calories == null && nullToAbsent
+          ? const Value.absent()
+          : Value(calories),
+      isRest:
+          isRest == null && nullToAbsent ? const Value.absent() : Value(isRest),
+      stepFinish: stepFinish == null && nullToAbsent
+          ? const Value.absent()
+          : Value(stepFinish),
+      finishDate: finishDate == null && nullToAbsent
+          ? const Value.absent()
+          : Value(finishDate),
+    );
   }
 
   factory ProgramStep.fromJson(Map<String, dynamic> json,
@@ -664,6 +728,21 @@ class ProgramStepsCompanion extends UpdateCompanion<ProgramStep> {
       map['finish_date'] = Variable<DateTime>(finishDate.value);
     }
     return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ProgramStepsCompanion(')
+          ..write('id: $id, ')
+          ..write('runningProgramId: $runningProgramId, ')
+          ..write('day: $day, ')
+          ..write('distance: $distance, ')
+          ..write('calories: $calories, ')
+          ..write('isRest: $isRest, ')
+          ..write('stepFinish: $stepFinish, ')
+          ..write('finishDate: $finishDate')
+          ..write(')'))
+        .toString();
   }
 }
 
@@ -899,6 +978,22 @@ class TrainingTimeData extends DataClass
     return map;
   }
 
+  TrainingTimeCompanion toCompanion(bool nullToAbsent) {
+    return TrainingTimeCompanion(
+      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      programStepsId: programStepsId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(programStepsId),
+      seconds: seconds == null && nullToAbsent
+          ? const Value.absent()
+          : Value(seconds),
+      type: type == null && nullToAbsent ? const Value.absent() : Value(type),
+      timeFinished: timeFinished == null && nullToAbsent
+          ? const Value.absent()
+          : Value(timeFinished),
+    );
+  }
+
   factory TrainingTimeData.fromJson(Map<String, dynamic> json,
       {ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
@@ -1037,6 +1132,18 @@ class TrainingTimeCompanion extends UpdateCompanion<TrainingTimeData> {
       map['time_finished'] = Variable<bool>(timeFinished.value);
     }
     return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('TrainingTimeCompanion(')
+          ..write('id: $id, ')
+          ..write('programStepsId: $programStepsId, ')
+          ..write('seconds: $seconds, ')
+          ..write('type: $type, ')
+          ..write('timeFinished: $timeFinished')
+          ..write(')'))
+        .toString();
   }
 }
 

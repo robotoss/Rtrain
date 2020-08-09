@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:moor_ffi/moor_ffi.dart';
-import 'package:moor_flutter/moor_flutter.dart';
+import 'package:moor/ffi.dart';
+import 'package:moor/moor.dart';
 import 'package:path_provider/path_provider.dart';
 import 'database_rtrain.dart';
 
@@ -28,4 +28,3 @@ class RtrainDatabase extends _$RtrainDatabase {
   @override
   int get schemaVersion => 1;
 }
-
