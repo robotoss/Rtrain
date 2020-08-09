@@ -33,20 +33,36 @@ class RtrainBaseDao extends DatabaseAccessor<RtrainDatabase>
   /// Programs steps
   ///
 
-  Future<void> insertMultipleProgramsSteps(List<ProgramStep> programStepsList) async {
+  Future<void> insertMultipleProgramsSteps(
+      List<ProgramStep> programStepsList) async {
     await batch((batch) {
       batch.insertAll(programSteps, programStepsList);
     });
   }
 
-  Future<List<ProgramStep>> getProgramsSteps() =>
-      select(programSteps).get();
+  Future<List<ProgramStep>> getProgramsSteps() => select(programSteps).get();
+
+  Future<ProgramWithTime> getProgramsStep(int stepId) async {
+    ProgramWithTime _programmWithTime = ProgramWithTime();
+
+    var steps = await (select(programSteps)
+          ..where((tbl) => tbl.id.equals(stepId)))
+        .get();
+    _programmWithTime.programmInfo = steps[0];
+    var times = await (select(trainingTime)
+          ..where((tbl) => tbl.programStepsId.equals(steps[0].id)))
+        .get();
+    _programmWithTime.trainigTime = times;
+
+    return _programmWithTime;
+  }
 
   ///
   /// Programs time parts
   ///
 
-  Future<void> insertMultipleTimeParts(List<TrainingTimeData> timePartsList) async {
+  Future<void> insertMultipleTimeParts(
+      List<TrainingTimeData> timePartsList) async {
     await batch((batch) {
       batch.insertAll(trainingTime, timePartsList);
     });

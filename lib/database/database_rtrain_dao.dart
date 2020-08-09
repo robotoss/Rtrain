@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:moor/ffi.dart';
 import 'package:moor/moor.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:r_train/data/model/program_with_time.dart';
 import 'database_rtrain.dart';
 
 import 'package:path/path.dart' as p;

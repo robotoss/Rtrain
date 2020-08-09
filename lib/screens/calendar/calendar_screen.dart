@@ -81,7 +81,8 @@ class CalendarScreen extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) => WorkoutScreen()));
+                        builder: (BuildContext context) =>
+                            WorkoutScreen(programStep: programStep)));
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width - 60,

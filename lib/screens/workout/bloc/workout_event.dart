@@ -7,6 +7,9 @@ abstract class WorkoutEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class WorkoutLoadMainDataEvent extends WorkoutEvent {}
+class WorkoutLoadMainDataEvent extends WorkoutEvent {
+  final BuildContext context;
+  WorkoutLoadMainDataEvent({@required this.context});
+}
 
 class StartButtonPressedEvent extends WorkoutEvent {}

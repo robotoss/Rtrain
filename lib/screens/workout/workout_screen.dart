@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:r_train/database/database_rtrain_dao.dart';
 import 'package:r_train/localizations/app_localizations.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/appBar/appBar_widget.dart';
@@ -10,13 +11,17 @@ import 'package:r_train/widgets/workout_timer/workout_timer_widget.dart';
 import 'bloc/workout_bloc.dart';
 
 class WorkoutScreen extends StatelessWidget {
+  final ProgramStep programStep;
+  const WorkoutScreen({Key key, @required this.programStep}) : super(key: key);
+
   static GlobalKey<ScaffoldState> drawerKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WorkoutBloc>(
       create: (context) {
-        return WorkoutBloc()..add(WorkoutLoadMainDataEvent());
+        return WorkoutBloc(programStep: programStep)
+          ..add(WorkoutLoadMainDataEvent(context: context));
       },
       child: BlocBuilder<WorkoutBloc, WorkoutState>(builder: (context, state) {
         return Container(
