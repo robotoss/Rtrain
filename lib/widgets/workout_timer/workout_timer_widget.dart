@@ -6,17 +6,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/workout_timer_bloc.dart';
 
 class WorkoutTimerWidget extends StatelessWidget {
+  final int seconds;
+  final funcCallBack;
+  const WorkoutTimerWidget(
+      {Key key, @required this.seconds, @required this.funcCallBack})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<WorkoutTimerBloc>(create: (context) {
-      return WorkoutTimerBloc()..add(StartTimerEvent());
-    }, child: BlocBuilder<WorkoutTimerBloc, WorkoutTimerState>(
+    return BlocBuilder<WorkoutTimerBloc, WorkoutTimerState>(
         builder: (context, state) {
       if (state is WorkoutTimerInitialState) {
         final String minutesStr =
             ((state.duration / 60) % 60).floor().toString().padLeft(2, '0');
         final String secondsStr =
             (state.duration % 60).floor().toString().padLeft(2, '0');
+        if (state.duration == 0) {
+          BlocProvider.of<WorkoutTimerBloc>(context)
+              .add(StopTimerEvent(context: context));
+        }
         return Container(
           width: MediaQuery.of(context).size.width / 1.5,
           height: MediaQuery.of(context).size.width / 1.5,
@@ -36,21 +44,21 @@ class WorkoutTimerWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Center(child: 
-              Text(
+              Center(
+                  child: Text(
                 '$minutesStr:$secondsStr',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 40,
                 ),
-                )),
+              )),
             ],
           ),
         );
       } else {
         return Container();
       }
-    }));
+    });
   }
 }
 

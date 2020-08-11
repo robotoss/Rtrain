@@ -7,6 +7,11 @@ abstract class WorkoutTimerEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class StartTimerEvent extends WorkoutTimerEvent {}
+class StartTimerSecEvent extends WorkoutTimerEvent {}
 
 class UpdateTimerEvent extends WorkoutTimerEvent {}
+
+class StopTimerEvent extends WorkoutTimerEvent {
+  final BuildContext context;
+  StopTimerEvent({@required this.context});
+}

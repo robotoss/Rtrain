@@ -28,14 +28,7 @@ class CalendarScreen extends StatelessWidget {
           child: SafeArea(
             top: false,
             child: Scaffold(
-              backgroundColor: ColorPalette.mainBackground,
-              appBar: gradientAppBar(context, 'calendar', drawerKey),
-              key: drawerKey,
-              drawer: DrawerWidget(),
-              body: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: body(context, state)),
+              body: body(context, state),
             ),
           ),
         );

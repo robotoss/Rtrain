@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r_train/localizations/app_localizations.dart';
+import 'package:r_train/screens/main/bloc/main_bloc.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/drawer/bloc/drawer_widget_bloc.dart';
 
 class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<DrawerWidgetBloc>(create: (context) {
-      return DrawerWidgetBloc();
-    }, child: BlocBuilder<DrawerWidgetBloc, DrawerWidgetState>(
+    return BlocBuilder<DrawerWidgetBloc, DrawerWidgetState>(
         builder: (context, state) {
       return Drawer(
         child: Container(
@@ -25,11 +24,12 @@ class DrawerWidget extends StatelessWidget {
           child: Column(
             children: <Widget>[
               drawerHeader(context),
+              bottomNavBarItem(context)
             ],
           ),
         ),
       );
-    }));
+    });
   }
 
   Widget drawerHeader(BuildContext context) {
@@ -76,10 +76,35 @@ class DrawerWidget extends StatelessWidget {
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
           Text(
-            title == 'distance' ? AppLocalizations.of(context).translate('total_distance') : AppLocalizations.of(context).translate('total_burned'),
+            title == 'distance'
+                ? AppLocalizations.of(context).translate('total_distance')
+                : AppLocalizations.of(context).translate('total_burned'),
             style: TextStyle(fontSize: 14, color: Colors.yellow),
           )
         ],
+      ),
+    );
+  }
+
+  Widget bottomNavBarItem(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          BlocProvider.of<MainBloc>(context).add(ChangeTabEvent(tabId: 0));
+        },
+        child: Container(
+          color: Colors.transparent,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text('123'),
+              SizedBox(
+                height: 2,
+              ),
+              Text('1321')
+            ],
+          ),
+        ),
       ),
     );
   }

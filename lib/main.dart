@@ -9,9 +9,9 @@ import 'package:r_train/main_bloc/auth/auth_main_bloc.dart';
 import 'package:r_train/theme/main_theme.dart';
 
 import 'localizations/app_localizations.dart';
-import 'main_bloc/train/train_main_bloc.dart';
 import 'screens/auth/auth_screen.dart';
 import 'screens/calendar/calendar_screen.dart';
+import 'screens/main/main_screen.dart';
 
 void main() {
   //System statusbar theme
@@ -27,9 +27,6 @@ void main() {
         BlocProvider<AuthMainBloc>(
           create: (BuildContext context) =>
               AuthMainBloc()..add(AppStartedEvent(context: context)),
-        ),
-        BlocProvider<TrainMainBloc>(
-          create: (BuildContext context) => TrainMainBloc(),
         ),
       ],
       child: MyApp(),
@@ -84,7 +81,7 @@ class MyApp extends StatelessWidget {
           return Container();
         }
         if (state is AuthMainAuthMainenticated) {
-          return CalendarScreen();
+          return MainScreen();
         }
         if (state is AuthMainUnauthenticated) {
           return AuthScreen();

@@ -12,4 +12,6 @@ class WorkoutLoadMainDataEvent extends WorkoutEvent {
   WorkoutLoadMainDataEvent({@required this.context});
 }
 
-class StartButtonPressedEvent extends WorkoutEvent {}
+class StartTimerEvent extends WorkoutEvent {}
+
+class NextTimeStepEvent extends WorkoutEvent {}

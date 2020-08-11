@@ -7,9 +7,29 @@ abstract class WorkoutState extends Equatable {
   List<Object> get props => [];
 }
 
-class WorkoutInitialState extends WorkoutState {}
+class WorkoutInitialState extends WorkoutState {
+  final bool showTimer;
 
-class WorkoutActiveState extends WorkoutState {}
+  const WorkoutInitialState({
+    @required this.showTimer,
+  });
+
+  @override
+  List<Object> get props => [showTimer];
+}
+
+// class WorkoutTimerShowState extends WorkoutState {
+//   final int workoutTime;
+//   final bool showTimer;
+
+//   const WorkoutTimerShowState({
+//     @required this.workoutTime,
+//     @required this.showTimer,
+//   });
+
+//   @override
+//   List<Object> get props => [workoutTime, showTimer];
+// }
 
 class WorkoutLoadingState extends WorkoutState {}
 

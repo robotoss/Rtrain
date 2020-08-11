@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:r_train/database/database_rtrain_dao.dart';
 import 'package:r_train/localizations/app_localizations.dart';
+import 'package:r_train/main_bloc/train/train_main_bloc.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/appBar/appBar_widget.dart';
 import 'package:r_train/widgets/drawer/drawer_widget.dart';
-import 'package:r_train/widgets/workout_timer/workout_timer_widget.dart';
+import 'package:r_train/widgets/timer/active_timer_widget.dart';
+import 'package:r_train/widgets/timer/timer_widget.dart';
 
 import 'bloc/workout_bloc.dart';
 
@@ -20,8 +22,9 @@ class WorkoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<WorkoutBloc>(
       create: (context) {
-        return WorkoutBloc(programStep: programStep)
-          ..add(WorkoutLoadMainDataEvent(context: context));
+        return WorkoutBloc(
+          programStep: programStep,
+        )..add(WorkoutLoadMainDataEvent(context: context));
       },
       child: BlocBuilder<WorkoutBloc, WorkoutState>(builder: (context, state) {
         return Container(
@@ -45,33 +48,67 @@ class WorkoutScreen extends StatelessWidget {
   }
 
   Widget body(BuildContext context, WorkoutState state) {
-    if (state is WorkoutInitialState) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          SizedBox(height: 1),
-          startButton(context),
-          bottomInfoBar(context)
-        ],
-      );
-    } else if (state is WorkoutActiveState) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          SizedBox(height: 1),
-          WorkoutTimerWidget(),
-          bottomInfoBar(context)
-        ],
-      );
-    } else {
-      return Container();
-    }
+    return Builder(builder: (context) {
+      if (state is WorkoutInitialState) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            SizedBox(height: 1),
+            !state.showTimer
+                ? startButton(context)
+                : activeTimerWidget(context),
+            // : TimerWidget(
+            //     seconds: BlocProvider.of<TrainMainBloc>(context).list[0],
+            //     callBackFunc: () {
+            //       BlocProvider.of<WorkoutBloc>(context)
+            //           .add(NextTimeStepEvent());
+            //     },
+            //   ),
+            bottomInfoBar(context)
+          ],
+        );
+      }
+      // else if (state is WorkoutTimerShowState) {
+      //   return Column(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: <Widget>[
+      //       SizedBox(height: 1),
+      //       TimerWidget(
+      //         seconds: state.workoutTime,
+      //         callBackFunc: () {
+      //           BlocProvider.of<WorkoutBloc>(context).add(NextTimeStepEvent());
+      //         },
+      //       ),
+      //       // BlocProvider(
+      //       //   create: (context) {
+      //       //     return WorkoutTimerBloc(
+      //       //         timeSeconds: state.workoutTime,
+      //       //         func: () {
+      //       //           BlocProvider.of<WorkoutBloc>(context)
+      //       //               .add(NextTimeStepEvent());
+      //       //         })
+      //       //       ..add(StartTimerSecEvent());
+      //       //   },
+      //       //   child: WorkoutTimerWidget(
+      //       //       seconds: state.workoutTime,
+      //       //       funcCallBack: () {
+      //       //         BlocProvider.of<WorkoutBloc>(context)
+      //       //             .add(NextTimeStepEvent());
+      //       //       }),
+      //       // ),
+      //       bottomInfoBar(context)
+      //     ],
+      //   );
+      // }
+      else {
+        return Container();
+      }
+    });
   }
 
   Widget startButton(BuildContext context) {
     return GestureDetector(
-      onTap: () =>
-          BlocProvider.of<WorkoutBloc>(context).add(StartButtonPressedEvent()),
+      onTap: () => BlocProvider.of<WorkoutBloc>(context).add(StartTimerEvent()),
       child: Container(
         width: MediaQuery.of(context).size.width / 1.5,
         height: MediaQuery.of(context).size.width / 1.5,
