@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:r_train/helpers/switchers/appbar_title_switcher.dart';
 import 'package:r_train/screens/calendar/calendar_screen.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/appBar/appBar_widget.dart';
@@ -47,7 +48,11 @@ class MainScreen extends StatelessWidget {
                       child: Scaffold(
                         backgroundColor: ColorPalette.mainBackground,
                         key: drawerKey,
-                        appBar: gradientAppBar(context, 'calendar', drawerKey),
+                        appBar: gradientAppBar(
+                            context,
+                            appBarTitleSwitch(
+                                BlocProvider.of<MainBloc>(context).indexScreen),
+                            drawerKey),
                         drawer: DrawerWidget(),
                         body: Builder(
                           builder: (context) {
