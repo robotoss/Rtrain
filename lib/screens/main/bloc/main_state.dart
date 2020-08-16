@@ -9,14 +9,16 @@ abstract class MainState extends Equatable {
 
 class MainInitialState extends MainState {
   final int indexScreen;
+  final int trainSeconds;
 
-  MainInitialState({@required this.indexScreen});
-
-  @override
-  List<Object> get props => [indexScreen];
+  MainInitialState({@required this.indexScreen, @required this.trainSeconds});
 
   @override
-  String toString() => 'MainInitialState { indexScreen: $indexScreen }';
+  List<Object> get props => [indexScreen, trainSeconds];
+
+  @override
+  String toString() =>
+      'MainInitialState { indexScreen: $indexScreen, trainSeconds: $trainSeconds }';
 }
 
 class MainLoadingState extends MainState {}

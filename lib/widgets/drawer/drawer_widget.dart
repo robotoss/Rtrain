@@ -24,7 +24,6 @@ class DrawerWidget extends StatelessWidget {
           child: Column(
             children: <Widget>[
               drawerHeader(context),
-              bottomNavBarItem(context)
             ],
           ),
         ),
@@ -57,7 +56,8 @@ class DrawerWidget extends StatelessWidget {
               decoration:
                   BoxDecoration(color: Colors.white, shape: BoxShape.circle),
             ),
-            drawerHeaderItem(context, 'burn', 17300),
+            drawerHeaderItem(context, 'burn',
+                BlocProvider.of<MainBloc>(context).activeSeconds),
             drawerHeaderItem(context, 'distance', 234),
           ],
         ),
@@ -82,29 +82,6 @@ class DrawerWidget extends StatelessWidget {
             style: TextStyle(fontSize: 14, color: Colors.yellow),
           )
         ],
-      ),
-    );
-  }
-
-  Widget bottomNavBarItem(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          BlocProvider.of<MainBloc>(context).add(ChangeTabEvent(tabId: 0));
-        },
-        child: Container(
-          color: Colors.transparent,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text('123'),
-              SizedBox(
-                height: 2,
-              ),
-              Text('1321')
-            ],
-          ),
-        ),
       ),
     );
   }

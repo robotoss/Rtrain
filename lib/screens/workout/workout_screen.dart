@@ -3,12 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:r_train/database/database_rtrain_dao.dart';
 import 'package:r_train/localizations/app_localizations.dart';
-import 'package:r_train/main_bloc/train/train_main_bloc.dart';
+import 'package:r_train/screens/main/bloc/main_bloc.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/appBar/appBar_widget.dart';
 import 'package:r_train/widgets/drawer/drawer_widget.dart';
 import 'package:r_train/widgets/timer/active_timer_widget.dart';
-import 'package:r_train/widgets/timer/timer_widget.dart';
 
 import 'bloc/workout_bloc.dart';
 
@@ -24,6 +23,7 @@ class WorkoutScreen extends StatelessWidget {
       create: (context) {
         return WorkoutBloc(
           programStep: programStep,
+          mainBloc: BlocProvider.of<MainBloc>(context),
         )..add(WorkoutLoadMainDataEvent(context: context));
       },
       child: BlocBuilder<WorkoutBloc, WorkoutState>(builder: (context, state) {
@@ -57,6 +57,7 @@ class WorkoutScreen extends StatelessWidget {
             !state.showTimer
                 ? startButton(context)
                 : activeTimerWidget(context),
+
             // : TimerWidget(
             //     seconds: BlocProvider.of<TrainMainBloc>(context).list[0],
             //     callBackFunc: () {

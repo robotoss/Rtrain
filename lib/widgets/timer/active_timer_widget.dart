@@ -3,9 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r_train/main_bloc/train/train_main_bloc.dart';
-import 'package:r_train/screens/workout/bloc/workout_bloc.dart';
+import 'package:r_train/screens/main/bloc/main_bloc.dart';
 
-Widget activeTimerWidget(BuildContext context) {
+Widget activeTimerWidget(
+  BuildContext context,
+) {
   String minutes(int _duration) {
     return ((_duration / 60) % 60).floor().toString().padLeft(2, '0');
   }
@@ -15,8 +17,8 @@ Widget activeTimerWidget(BuildContext context) {
   }
 
   double onePercent = 100 /
-      BlocProvider.of<TrainMainBloc>(context)
-          .list[BlocProvider.of<TrainMainBloc>(context).activeTimeStep];
+      BlocProvider.of<MainBloc>(context)
+          .list[BlocProvider.of<MainBloc>(context).activeTimeStep];
 
   return Container(
     width: MediaQuery.of(context).size.width / 1.5,
@@ -32,20 +34,18 @@ Widget activeTimerWidget(BuildContext context) {
               foregroundPainter: MyPainter(
                   lineColor: Colors.transparent,
                   completeColor: Colors.blueAccent,
-                  completePercent:
-                      (BlocProvider.of<TrainMainBloc>(context).list[
-                                  BlocProvider.of<TrainMainBloc>(context)
-                                      .activeTimeStep] -
-                              BlocProvider.of<TrainMainBloc>(context)
-                                  .activeSeconds) *
-                          onePercent,
+                  completePercent: (BlocProvider.of<MainBloc>(context).list[
+                              BlocProvider.of<MainBloc>(context)
+                                  .activeTimeStep] -
+                          BlocProvider.of<MainBloc>(context).activeSeconds) *
+                      onePercent,
                   width: 10.0),
             ),
           ),
         ),
         Center(
             child: Text(
-          '${minutes(BlocProvider.of<TrainMainBloc>(context).activeSeconds)}:${seconds(BlocProvider.of<TrainMainBloc>(context).activeSeconds)}',
+          '${minutes(BlocProvider.of<MainBloc>(context).activeSeconds)}:${seconds(BlocProvider.of<MainBloc>(context).activeSeconds)}',
           style: TextStyle(
             color: Colors.white,
             fontSize: 40,

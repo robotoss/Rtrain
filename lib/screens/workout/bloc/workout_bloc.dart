@@ -3,17 +3,18 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:r_train/data/model/program_with_time.dart';
 import 'package:r_train/database/database_rtrain_dao.dart';
-import 'package:r_train/main_bloc/train/train_main_bloc.dart';
+import 'package:r_train/screens/main/bloc/main_bloc.dart';
 
 part 'workout_event.dart';
 part 'workout_state.dart';
 
 class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
+  final MainBloc mainBloc;
   final ProgramStep programStep;
-  WorkoutBloc({@required this.programStep}) : super(WorkoutLoadingState());
+  WorkoutBloc({@required this.programStep, @required this.mainBloc})
+      : super(WorkoutLoadingState());
 
   // Инициализирую базу данных
   RtrainBaseDao _dbProvider;
@@ -51,6 +52,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
 
   Stream<WorkoutState> _buildStartButtonPressedEvent() async* {
     // yield WorkoutTimerShowState(workoutTime: list[activeTimeStep]);
+    mainBloc.add(StartWorkoutEvent());
     yield WorkoutInitialState(showTimer: true);
   }
 

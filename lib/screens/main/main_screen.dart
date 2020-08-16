@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:r_train/screens/calendar/calendar_screen.dart';
-import 'package:r_train/screens/workout/workout_screen.dart';
 import 'package:r_train/theme/main_theme.dart';
 import 'package:r_train/widgets/appBar/appBar_widget.dart';
 import 'package:r_train/widgets/drawer/bloc/drawer_widget_bloc.dart';
